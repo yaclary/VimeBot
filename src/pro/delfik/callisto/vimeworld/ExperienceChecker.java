@@ -26,6 +26,7 @@ public class ExperienceChecker {
 		for (TopUnit unit : toKick) {
 			System.out.println(unit.getName() + " набрал всего " + unit.getPoints() + " XP за три дня, кикаем его!");
 			VimeBot.queue("/g kick " + unit.getName());
+			// Бот кикает тех, кто не набрал 2000 опыта в день
 		}
 	}
 	
@@ -33,5 +34,6 @@ public class ExperienceChecker {
 		Guild g = API.getGuild(Callisto.getGuildName());
 		DataIO.writeConfig("guildDump.txt", TopUnit.toStringStringMap(g.generateLevelTop()));
 		Callisto.fine("Текущие данные об игроках гильдии сохранены.");
+		// Создания файла в системном диске C: и записывает данные о игроков
 	}
 }
