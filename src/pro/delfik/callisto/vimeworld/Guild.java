@@ -89,7 +89,7 @@ public class Guild {
 
 		public enum Status {
 			LEADER("Лидер"),
-			OFFICER("Staff"),
+			OFFICER("Офицер"),
 			MEMBER("Участник");
 			private final String description;
 
