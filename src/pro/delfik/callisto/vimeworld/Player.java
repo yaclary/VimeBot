@@ -12,20 +12,20 @@ public class Player {
 
     Player(JSONObject user) {
         try {
-            this.id = user.getInt("id");
-            this.name = user.getString("username");
-            this.level = user.getInt("level");
-            this.rank = Rank.valueOf(user.getString("rank"));
+            this.id = user.getInt("id"); // Получение ID
+            this.name = user.getString("username"); // Получение ника
+            this.level = user.getInt("level"); // Получение уровня
+            this.rank = Rank.valueOf(user.getString("rank"); // Получение ранга
             int id = 0;
             try {
-                id = user.getJSONObject("guild").getInt("id");
+                id = user.getJSONObject("guild").getInt("id"); // Получение ID гильдии
             } catch (JSONException ignored) {}
             guildID = id;
         } catch (JSONException ex) {
             throw new RuntimeException(ex);
         }
     }
-
+// Ранги на VimeWorld.ru 
     public enum Rank {
         PLAYER("Игрок", "", 0),
         VIP("VIP", "[V]", 0x00be00),
@@ -44,14 +44,13 @@ public class Player {
 
         private final String title, prefix;
         private final int color;
-
+// Отвечает за префикс,цвет,название
         Rank(String title, String prefix, int color) {
             this.title = title;
             this.color = color;
             this.prefix = prefix;
         }
     }
-    
     public Session getSession() {
         try {
             JSONObject online = new JSONObject(API.readRequest("http://api.vime.world/user/" + id + "/session"));
@@ -72,7 +71,6 @@ public class Player {
     public int getId() {
         return id;
     }
-
     public int getGuildID() {
         return guildID;
     }
